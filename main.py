@@ -1,4 +1,6 @@
 
+from art import logo
+
 def add(n1,n2):
   """this will add the numbers"""
   return n1+n2;
@@ -21,23 +23,27 @@ operation={
   "-":subtract,
   "/":divide,
 }
-
-num1=int(input("enter your first number: "))
-
-
-for operator in operation:
-  print(operator)
-operator_symbol=input("pick any operator above: ")
-num2=int(input("enter your second number: "))
-funtion=operation[operator_symbol]
-result=funtion(num1,num2);
+print(logo)
+def calc():
+  num1=float(input("enter your first number: "))
+  condition =True
+  for operator in operation:
+      print(operator)
+  while condition:
     
-print(f"{num1} {operator_symbol} {num2} = {result}")    
+    operator_symbol=input("pick any operator above: ")
+    num2=float(input("enter the next number: "))
+    funtion=operation[operator_symbol]
+    result=funtion(num1,num2);
+    print(f"{num1} {operator_symbol} {num2} = {result}")    
+    check=input(f"Type 'y' to continue calculation with {result}, or type 'n' for new calculation. : ").lower() 
+    if check =='y':
+      num1=result
+    
+    else:
+      condition =False
+      
+      calc()
 
-operator_symbol=input("pick an other operator: ")
-num3=int(input("enter the next number: "))
-funtion=operation[operator_symbol]
-num4=result
-result=funtion(num4,num3)
-
-print(f"{num4} {operator_symbol} {num3} = {result}")
+calc();      
+    
